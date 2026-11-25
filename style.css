@@ -1,0 +1,108 @@
+* { box-sizing: border-box; }
+:root {
+  color-scheme: dark;
+  --bg: #1d2b36;
+  --bar: #17232c;
+  --text: #c5d0d8;
+  --muted: #8797a3;
+  --gold: #e6a23c;
+  --green: #45d6b0;
+  --blue: #80bfff;
+}
+html, body { min-height: 100%; }
+body {
+  margin: 0; padding: 18px; background: #f4f6f7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  display: grid; place-items: center;
+}
+.window {
+  width: min(1180px, 100%); min-height: min(760px, calc(100vh - 36px));
+  background: var(--bg); color: var(--text); border: 1px solid #34434d;
+  border-radius: 7px; overflow: hidden; box-shadow: 0 3px 9px #0002;
+}
+.titlebar {
+  height: 52px; display: flex; align-items: center; gap: 18px;
+  padding: 0 18px; background: var(--bar); border-bottom: 1px solid #33424c;
+}
+.traffic-lights { display: flex; gap: 9px; flex: 0 0 auto; }
+.light { width: 16px; height: 16px; border-radius: 50%; display: block; }
+.red { background: #ff777c; } .yellow { background: #ffd166; } .green { background: #62dfa0; }
+.address {
+  height: 34px; flex: 1; max-width: 790px; margin: auto; display: flex; align-items: center;
+  gap: 9px; padding: 0 12px; background: #f7f8f8; color: #68737b;
+  border-radius: 3px; font-family: Arial, sans-serif; font-size: 14px;
+}
+.address::first-letter { color: #39a66b; }
+.lock { color: #8b9a9f; }
+.window-menu { font-size: 22px; color: #84939c; border: 1px solid #56636b; padding: 1px 9px; background: #f6f7f7; color: #84939c; }
+.terminal { padding: 18px 22px 22px; }
+.topline, .input-line label { font-size: 13px; white-space: nowrap; }
+.user { color: var(--gold); font-weight: 700; }
+.at { color: var(--green); }
+.host { color: var(--green); }
+.path { color: #d2dbe1; }
+.command-label { color: #d2dbe1; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 390px); gap: 24px; align-items: start; margin-top: 24px; }
+.logo { color: #9aaab5; font-size: clamp(10px, 1.1vw, 15px); line-height: 1.08; margin: 0 0 28px; white-space: pre; }
+.intro { max-width: 680px; font-size: 13px; line-height: 1.6; }
+.intro p { margin: 7px 0; }
+.welcome { font-weight: 700; }
+.muted, .footer { color: var(--muted); }
+.rule { color: #8b9aa4; }
+.accent { color: var(--gold); }
+.hint { margin-top: 14px !important; }
+.inline-command { color: var(--green); background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; }
+.inline-command:hover { color: #fff; }
+.portrait {
+  color: #cbd5dc; font-size: clamp(3px, .39vw, 5px); line-height: 1.02;
+  margin: 0; white-space: pre; overflow: hidden; justify-self: center;
+}
+.output { margin-top: 22px; max-width: 850px; font-size: 13px; line-height: 1.65; }
+.output:empty { display: none; }
+.output-block { margin: 0 0 17px; }
+.output-title { color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+.output p { margin: 3px 0; }
+.output a { color: var(--blue); }
+.output ul { margin: 5px 0 8px 20px; padding: 0; }
+.github-stats {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid #33424c;
+  border-radius: 4px;
+  padding: 12px 16px;
+  display: inline-block;
+  margin: 10px 0;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.stats-title {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.stats-line {
+  color: #33424c;
+  user-select: none;
+}
+.github-stats span {
+  color: var(--green);
+  font-weight: bold;
+}
+.input-line { display: flex; align-items: center; margin-top: 18px; min-height: 25px; gap: 8px; }
+.input-line input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: #fff; font: inherit; font-size: 13px; caret-color: var(--green); }
+.cursor { width: 7px; height: 15px; background: var(--green); animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+.footer { margin-top: 18px; font-size: 11px; }
+kbd { border: 1px solid #52616a; border-radius: 3px; padding: 1px 5px; color: #dbe4e9; }
+@media (max-width: 760px) {
+  body { padding: 0; display: block; background: var(--bg); }
+  .window { min-height: 100vh; border: 0; border-radius: 0; }
+  .titlebar { gap: 10px; padding: 0 12px; }
+  .address { font-size: 11px; }
+  .terminal { padding: 15px 13px 22px; }
+  .hero { grid-template-columns: 1fr; gap: 22px; }
+  .portrait { font-size: clamp(2.2px, .65vw, 4px); justify-self: start; max-width: 100%; }
+  .logo { font-size: clamp(7px, 1.8vw, 12px); overflow: hidden; }
+  .intro, .output { font-size: 12px; }
+  .input-line label { font-size: 10px; }
+}
